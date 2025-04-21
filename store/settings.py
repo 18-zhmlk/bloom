@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [
     os.environ.get('RENDER_EXTERNAL_HOSTNAME', ''),
 ]
 
+PORT = int(os.environ.get('PORT', 8000))
+
 
 # Application definition
 
