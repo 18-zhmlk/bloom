@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}A&Z Blooms{% endblock %}
+
+{% block content %}
+<div class="order-container">
+    <h1>Оформление заказа</h1>
+
+    {% if empty_cart %}
+        <div class="empty-cart">
+            <p>Ваша корзина пуста.</p>
+            <a href="/catalog" class="btn">Перейти в каталог</a>
+        </div>
+    {% else %}
+        <div class="order-summary">
+            <h2>Ваш заказ</h2>
+            <table class="order-table">
+                <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.price }} KZT</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td class="order-total-label"><strong>Итого:</strong></td>
+                    <td class="order-total-price"><strong>{{ total_price }} KZT</strong></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="order-form">
+            <h2>Информация о заказе</h2>
+            <form method="post" id="orderForm">
+                {% csrf_token %}
+
+                <div class="form-section">
+                    <h3>Данные получателя</h3>
+                    <div class="form-group">
+                        <label for="client_name">ФИО клиента*</label>
+                        <input type="text" id="client_name" name="client_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client_phone">Телефон клиента*</label>
+                        <input type="tel" id="client_phone" name="client_phone" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Данные карты</h3>
+                    <div class="form-group">
+                        <label for="card_number">Номер карты*</label>
+                        <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456"
+                               maxlength="19" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card_name">Имя владельца*</label>
+                        <input type="text" id="card_name" name="card_name" placeholder="ZHAMILYA KAMEL" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="expiry_date">Срок действия*</label>
+                            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" maxlength="5"
+                                   required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="cvv">CVV код*</label>
+                            <input type="password" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Оплатить</button>
+                    <a href="/cart" class="btn">Вернуться в корзину</a>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

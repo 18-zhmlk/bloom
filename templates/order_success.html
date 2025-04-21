@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Заказ успешно оформлен | Bloom{% endblock %}
+
+{% block content %}
+    <div class="success-container">
+        <div class="success-message">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Заказ успешно оформлен!</h1>
+            <div class="order-details">
+                <p class="order-status">Статус: <span class="status-success">Оплачен</span></p>
+                {% if order_number %}
+                    <p class="order-number">Номер заказа: <strong>#{{ order_number }}</strong></p>
+                {% endif %}
+                <p class="order-info">Мы отправили детали вашего заказа на указанный номер телефона.</p>
+            </div>
+            <div class="success-text">
+                <p>Благодарим вас за покупку в нашем магазине!</p>
+                <p>Ваш заказ принят и будет обработан в ближайшее время.</p>
+                <p>Наш менеджер свяжется с вами для подтверждения деталей заказа.</p>
+            </div>
+            <div class="success-actions">
+                <a href="/" class="btn btn-secondary">На главную</a>
+                <a href="/catalog" class="btn btn-primary">Продолжить покупки</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // сброс корзины
+        cartIds = []
+        setCookie('cart_ids', JSON.stringify(cartIds), 7);
+        updateCartCount();
+    </script>
+{% endblock %}

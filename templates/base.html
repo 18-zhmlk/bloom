@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Главная | Bloom</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/style.css' %}"
+    />
+    <script src="{% static 'js/motion.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/order.js' %}"></script>
+    <script src="{% static 'js/catalog.js' %}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="top-contact">
+        <a
+                href="https://2gis.kz/astana/geo/9570784863369751/71.428269,51.122431"
+                target="_blank"
+        >
+            <i class="fas fa-map-marker-alt"></i> Улица Сыганак, 60
+        </a>
+        <a href="https://wa.me/+77478423018" target="_blank">
+            <i class="fas fa-phone-alt"></i> +7-(747)-842-30-18
+        </a>
+    </div>
+    <header>
+        <!-- Основной хедер -->
+        <div class="main-header">
+            <div class="main-header-inner">
+                <div class="logo">
+                    <span class="bloom">BLOOM</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">ГЛАВНАЯ</a></li>
+                        <li><a href="catalog">КАТАЛОГ</a></li>
+                        <li><a href="/index#about">О НАС</a></li>
+                        <li><a href="/index#contacts">КОНТАКТЫ</a></li>
+                        <li>
+                            <a href="cart"
+                            >КОРЗИНА (<span id="cart-count">0</span
+                            >)</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer>
+        <p>&copy; 2025 Bloom</p>
+    </footer>
+</div>
+</body>
+</html>

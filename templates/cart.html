@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина | Bloom{% endblock %}
+
+{% block content %}
+    <div class="cart-container">
+        <h1>Корзина</h1>
+
+        {% if empty_cart %}
+            <div class="empty-cart">
+                <p>Ваша корзина пуста.</p>
+                <a href="/catalog" class="btn">Перейти в каталог</a>
+            </div>
+        {% else %}
+            <div class="cart-items">
+                <table class="cart-table">
+                    <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cart_items %}
+                        <tr class="cart-item" data-id="{{ item.id }}">
+                            <td class="cart-item-image">
+                                <img src="{{ item.img }}" alt="{{ item.title }}">
+                            </td>
+                            <td class="cart-item-title">{{ item.title }}</td>
+                            <td class="cart-item-price">{{ item.price }} KZT</td>
+                            <td class="cart-item-actions">
+                                <button class="remove-item" data-id="{{ item.id }}">Удалить</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="2" class="cart-total-label">Итого:</td>
+                        <td class="cart-total-price">{{ total_price }} KZT</td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+
+                <div class="cart-actions">
+                    <a href="/catalog" class="btn">Продолжить покупки</a>
+                    <a href="/order" class="btn btn-primary">Оформить заказ</a>
+                    <button id="clear-cart" class="btn btn-danger">Очистить корзину</button>
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}
