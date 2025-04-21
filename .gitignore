@@ -8,3 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+/.idea/.gitignore
+/.idea/.name
+/.idea/a_z_blooms.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
