@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-odm+tumg%d8ayth%$q^!a(j++%^8w#*a6!p3znqv+al99!$+so
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bloom-iekc.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME', ''),
+]
 
 
 # Application definition
