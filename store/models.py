@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField()
@@ -23,3 +24,12 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Заказ №{self.id} от {self.client_name}"
+
+
+class FlowerStock(models.Model):
+    name = models.CharField(max_length=100)
+    quantity = models.IntegerField()
+    price_per_unit = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.name} — {self.quantity} шт. по {self.price_per_unit} KZT"
