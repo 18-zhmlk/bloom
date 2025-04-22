@@ -1063,8 +1063,9 @@ input:focus {
     padding: 20px;
     border-radius: 0px;
     width: 80%;
-    max-width: 800px;
+    max-width: 1800px;
     position: relative;
+    height: 1000px;
 }
 
 .close-modal {
@@ -1089,9 +1090,9 @@ input:focus {
 }
 
 .modal-product-details img {
-    max-width: 300px;
-    max-height: 300px;
-    object-fit: contain;
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
 }
 
 .modal-product-info {
